@@ -53,3 +53,29 @@ python3 -m http.server 8000
 Anschließend `http://localhost:8000` öffnen. Die Anwendung speichert Entwürfe ausschließlich in `localStorage` des jeweiligen Browsers und Ursprungs. Schriftarten werden von Google Fonts geladen; ohne Verbindung greifen Systemschriften.
 
 Unabhängiges Projekt, keine offizielle Anwendung von L-BOXX, TANOS oder Festool. Produkt- und Markennamen gehören den jeweiligen Rechteinhabern.
+
+## Griffbereiche und Abstandhalter
+
+Die L-BOXX ist nicht quaderförmig. Eine frei zugängliche, verifizierte Herstellerzeichnung mit bemaßter Boden-Innenkontur und höhenabhängigen Griffvorsprüngen konnte für die unterstützten Varianten nicht gefunden werden. Hersteller-Innenmaße sind deshalb nicht mit einer exakten Innenkontur gleichzusetzen.
+
+Als zusätzliche **Sicherheitszonen, nicht als exakte Gehäusegeometrie**, werden bei L-BOXX-Modellen zwei mittige Rechtecke von zunächst 20 × 100 mm an den seitlichen Rändern gesperrt. Diese Näherung stammt aus einer [dokumentierten Messung einer Schaumstoffeinlage für die L-BOXX 136](https://timbertime.de/anleitungen/schaumstoff-fuer-werkzeugeinlage-werkzeug-einlagen-selber-machen/). Dort werden ca. 420 × 320 mm für die Schaumstofffläche und ca. 20 × 100 mm für die seitlichen Aussparungen genannt. Diese Maße beziehen sich nicht zwingend auf den Kofferboden. Die genaue mittige Lage ist eine Annahme. Die Werte sind weder für die L-BOXX 102 noch für die 238 separat bestätigt. Insbesondere können die bereits verwendeten Mindest-Innenmaße die Engstellen schon berücksichtigen; zusätzliche Zonen reduzieren die Planung dann vorsichtshalber weiter.
+
+Unter **Griff-Sicherheitszonen** lassen sich Einragtiefe und Länge ändern oder die zusätzlichen Zonen abschalten. „Kontur übernehmen“ verkleinert betroffene Kästchen auf ihr größtes verbleibendes Rechteck. Vorhandene Layouts werden beim ersten Laden dieser Version ebenfalls entsprechend angepasst. Das ist keine vollständige Rekonstruktion der realen Innenkontur; für eine genaue Passung sind Messungen am eigenen Koffer und auf der vorgesehenen Druckhöhe erforderlich.
+
+**Abstandhalter** füllen die freien Flächen innerhalb des Planungsbereichs, ohne Kästchen oder gesperrte Zonen zu überlappen. Sie reduzieren seitliches Spiel. Sie verriegeln die Kästchen nicht gegen Anheben und gleichen keine unbekannte, höhenabhängige Gehäuseform aus. Die Vorgabe beträgt 0,2 mm Spiel zu jedem Kästchen und 0,4 mm zum äußeren Planungsrand. Dünne Restspalten unter 1,2 mm bleiben frei; an Segmentgrenzen kommt 0,1 mm hinzu. Höhe und Spiel sind einstellbar. Die tatsächliche Abstandhalterhöhe wird auf die Kästchenhöhe minus 1 mm und die Druckerhöhe begrenzt.
+
+„Kästchen + Abstandhalter (ZIP)“ enthält je Teil eine eigene STL-Datei, eine `Montageplan.csv` mit den Einbaukoordinaten und Druckhinweise. „Nur Abstandhalter (ZIP)“ exportiert nur die Füllstücke und den Montageplan. Lange Füllstücke werden automatisch auf die Druckfläche segmentiert. Der Slicer bestimmt über die Infill-Einstellung den Materialbedarf der geschlossenen Füllstücke. Körper werden als reine Geometrie exportiert; ein Druck startet nicht automatisch.
+
+## 3D-Drucker und Bauraumwarnung
+
+Vordefiniert sind:
+
+| Drucker | Nomineller Druckbereich X × Y × Z |
+| --- | --- |
+| [Bambu Lab A1 mini](https://store.bblcdn.eu/s8/default/87c1a9ef9f3a438a87d8f19fd8faea58/Bambu-Lab-A1-mini-tech-specs.pdf) | 180 × 180 × 180 mm |
+| [Bambu Lab P1S](https://store.bblcdn.com/s5/default/78c105c0c92642a99e64b4b0b0f3ca6a.pdf) | 256 × 256 × 256 mm |
+| [Original Prusa MK4S](https://www.prusa3d.com/product/original-prusa-mk4s-3d-printer/) | 250 × 210 × 220 mm |
+
+Unter **Eigener Drucker** können Breite, Tiefe und Höhe manuell zwischen 20 und 2000 mm eingegeben werden. Ein zusätzlicher Rand von zunächst 2 mm pro Seite wird von der verfügbaren X-/Y-Fläche abgezogen. Der Vergleich prüft stehende Kästchen in 0°- und 90°-Ausrichtung, keine diagonalen oder gekippten Anordnungen. Zu große Kästchen werden farblich markiert und in einer Warnmeldung aufgelistet. Die Größe eines einzelnen Kastens wird nicht automatisch geändert oder zerlegt. Export bleibt bei bloßer Bauraumüberschreitung möglich, damit die STL extern weiterbearbeitet werden kann. Kollisionen mit den Sicherheitszonen verhindern dagegen den Export, bis das Layout angepasst ist.
+
+Die Prüfung verwendet einen rechteckigen, nominellen Bauraum. Druckerspezifische Sperrflächen, Brims, Supports und individuelle Slicer-Einstellungen müssen zusätzlich berücksichtigt werden. Druckerwahl und eigene Maße werden mit dem Entwurf lokal gespeichert.
