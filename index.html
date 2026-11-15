@@ -152,5 +152,10 @@ $('exportAll').onclick=()=>{if(!state.boxes.length||!exportAllowed(state.boxes))
 $('exportSpacers').onclick=()=>{const parts=spacerParts();if(!parts.length||!exportAllowed([]))return;const files=parts.map((b,i)=>({name:'Abstandhalter/'+boxFilename(b,i),data:stl([b],true,true)}));files.push(...assemblyFiles(parts));downloadFile(zipFiles(files),dims().name.replaceAll(' ','-')+'-Abstandhalter.zip','application/zip')};
 
 mountCatalogue();
-try{const s=JSON.parse(localStorage.getItem('boxx-studio-v1'));if(s&&models[s.model]&&Array.isArray(s.boxes)&&s.boxes.length<=200&&Number.isFinite(s.wall)&&s.wall>=.8&&s.wall<=5&&Number.isFinite(s.floor)&&s.floor>=.8&&s.floor<=5){state=s;const rawBoxes=state.boxes;state.boxes=adaptToContour(rawBoxes).filter(Boolean);if(state.boxes.length!==rawBoxes.length)throw Error();if(!state.boxes.every(b=>typeof b.name==='string'&&typeof b.id==='string'&&Number.isInteger(b.color)&&b.color>=0&&b.color<4&&valid(b)))throw Error();selected=state.boxes[0]?.id;render()}else template('mixed',false)}catch{state={model:'102',boxes:[],wall:2,floor:2};template('mixed',false)}
+try{const saved=JSON.parse(localStorage.getItem('boxx-studio-v1'));if(saved&&models[saved.model]&&Array.isArray(saved.boxes)&&saved.boxes.length<=200&&Number.isFinite(saved.wall)&&saved.wall>=.8&&saved.wall<=5&&Number.isFinite(saved.floor)&&saved.floor>=.8&&saved.floor<=5){
+ state=saved;const previousContours=state.contours;state.contours={...previousContours,[state.model]:{enabled:false,depth:0,length:0}};
+ if(!state.boxes.every(b=>typeof b.name==='string'&&typeof b.id==='string'&&Number.isInteger(b.color)&&b.color>=0&&b.color<4&&valid(b)))throw Error();state.contours=previousContours;
+ const adjusted=adaptToContour(state.boxes);if(adjusted.every(Boolean)&&JSON.stringify(adjusted)!==JSON.stringify(state.boxes)){checkpoint();state.boxes=adjusted}
+ selected=state.boxes[0]?.id;render();
+}else template('mixed',false)}catch{state={model:'102',boxes:[],wall:2,floor:2};template('mixed',false)}
 </script></body></html>
