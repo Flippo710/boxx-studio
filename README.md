@@ -101,3 +101,7 @@ Im TANOS-Katalog sind für Systainer³ M die EPP-Deckeleinlage 83000044 (5 mm) o
 Die **Kleinteile-Transportprüfung** ist standardmäßig aktiv. Fehlende Auflage, unbestätigte Kontaktmaße sowie zu niedrige oder zu hohe Kästchen erzeugen eine Warnung und verhindern den Export als transportgeprüftes Layout. Höhendifferenzen über 0,1 mm werden rechnerisch markiert; diese Rechentoleranz ist keine Material- oder Dichtheitsgarantie. Eine Änderung des Kontaktmaßes oder des Einbaustatus hebt die Prüfbestätigung auf. Beim Kofferwechsel gelten die separat gespeicherten Angaben des neuen Modells.
 
 Für reine CAD-Experimente lässt sich die Transportprüfung ausdrücklich deaktivieren. Dann wird Geometrie ohne Bestätigung des Deckelkontakts exportiert; die Druckhinweise dokumentieren das. Die Software kann weder realen Anpressdruck noch Schaumstoffverformung, Randunterbrechungen oder das Zurückhalten beliebig kleiner Teile nachweisen. Eine passende Einlage und ein reales Kontaktmaß bleiben erforderlich.
+
+### Automatische Höhenvorauswahl
+
+Alle Modelle erhalten eine recherchierte Höhenvorauswahl: L-BOXX 102/136 verwenden die Einsatzboxen-Referenzen 63/95 mm. Bei den übrigen Modellen dient die veröffentlichte Hersteller-Innenhöhe als ausdrücklich vorläufiger Ausgangswert, nicht als bestätigtes Kontaktmaß mit Deckeleinlage. Neue Kästchen übernehmen die Vorauswahl im Transportmodus. Eigene gespeicherte Höhen bleiben erhalten; leere Altdaten erhalten die Vorauswahl. Die physische Kontaktprüfung bleibt erforderlich.
