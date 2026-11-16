@@ -79,3 +79,25 @@ Vordefiniert sind:
 Unter **Eigener Drucker** können Breite, Tiefe und Höhe manuell zwischen 20 und 2000 mm eingegeben werden. Ein zusätzlicher Rand von zunächst 2 mm pro Seite wird von der verfügbaren X-/Y-Fläche abgezogen. Der Vergleich prüft stehende Kästchen in 0°- und 90°-Ausrichtung, keine diagonalen oder gekippten Anordnungen. Zu große Kästchen werden farblich markiert und in einer Warnmeldung aufgelistet. Die Größe eines einzelnen Kastens wird nicht automatisch geändert oder zerlegt. Export bleibt bei bloßer Bauraumüberschreitung möglich, damit die STL extern weiterbearbeitet werden kann. Kollisionen mit den Sicherheitszonen verhindern dagegen den Export, bis das Layout angepasst ist.
 
 Die Prüfung verwendet einen rechteckigen, nominellen Bauraum. Druckerspezifische Sperrflächen, Brims, Supports und individuelle Slicer-Einstellungen müssen zusätzlich berücksichtigt werden. Druckerwahl und eigene Maße werden mit dem Entwurf lokal gespeichert.
+
+## Deckeleinlage, Höhen und Kleinteile beim Drehen
+
+Die Hersteller-Innenhöhen wurden erneut geprüft: L-BOXX Baseline 102 **65 mm**, 136 **101 mm**, 238 **203 mm**. Für Systainer³ gelten die Innenhöhen aus dem TANOS-Katalog: S 76 **67 mm**, S 147 **138 mm**, M 112 **71 mm**, M 137 **96 mm**, M 187 **146 mm**, M 237 **196 mm**, L 137 **94 mm**, L 187 **144 mm**, Organizer M/L 89 jeweils **60 mm**. Modellnummern und Außenhöhen sind keine Kästchenhöhen.
+
+**Innenhöhe ist nicht gleich Deckelkontakt-Höhe.** Die bisherige Vorgabe von 30–55 mm hohen Preset-Kästchen schließt bei höheren Koffern nicht gegen den Deckel ab. Eine Deckeleinlage schützt deshalb nur dann vor Vermischen, wenn sämtliche Kästchenränder an einer durchgehenden, geeigneten Auflagefläche anliegen. Abstandhalter gegen seitliches Rutschen ersetzen diese Auflage nicht.
+
+Für die L-BOXX Baseline nennt der Hersteller die [Deckeleinlage LB 6000003670](https://l-boxx.com/de/produkt/deckeleinlage-lb) mit Außenmaßen 405 × 321 × 21 mm. Sortimo bietet daneben die [Deckeleinlage EPP G4 1000011324](https://www.mysortimo.de/de/BOXXen-%26-Koffer/Zubeh%C3%B6r-BOXXen-%26-Koffer/Deckeleinlagen-/Deckeleinlage-EPP-L-BOXX-G4/p/000000001000011324) für 102/136 G4 mit 327 × 438 × 28 mm an. Diese Ausführungen und ihre Außenmaße dürfen nicht verwechselt werden. Die Materialdicke ist nicht automatisch vollständig von der genannten Koffer-Innenhöhe abzuziehen: Einbaulage, Deckelvertiefung und Kompression bestimmen die wirksame Kontaktfläche.
+
+Im TANOS-Katalog sind für Systainer³ M die EPP-Deckeleinlage 83000044 (5 mm) oder das gewölbte Polster 83570006, für L 83000045 (5 mm) oder 83570010, für S 83000911 oder 83500908 aufgeführt. Die Organizer sind ein abgestimmtes Deckel-/Einsatzboxen-System; dort ist eine zusätzliche Schaumstoffeinlage nicht pauschal erforderlich. Bei selbst gedruckten Kästchen muss die vollständige Auflage trotzdem geprüft werden.
+
+### Kontakt-Höhe einstellen
+
+1. Passende Einlage montieren bzw. die geeignete Auflagefläche des Organizer-Deckels ermitteln.
+2. Die wirksame Höhe von der tatsächlichen **Kästchen-Aufstellfläche** bis zur Unterseite der eingebauten, geschlossenen Deckelauflage messen. Eine untergelegte Matte beeinflusst die Aufstellfläche.
+3. Das Maß unter **Deckel & Kästchenhöhe** eintragen. Die Kontakt-Höhe wird je Koffermodell separat gespeichert. H63 bei 102 und H95 bei 136 sind nur Insetboxen-Referenzwerte aus dem Sortimo-System und ausdrücklich kein Nachweis für die konkrete Baseline-Variante. Für andere Modelle bleibt das Kontaktmaß zunächst leer.
+4. **Alle Kästchen auf Kontakt-Höhe** setzt alle Kästchen auf die gleiche äußere Höhe. Neue Kästchen und Presets verwenden im Transportmodus dieses Maß; die ursprünglichen Preset-Höhen werden dabei nicht übernommen. Vorhandene Kästchen werden beim Ändern des Maßes nicht ungefragt angepasst.
+5. Bestätigen, dass Einlage/Deckelauflage eingebaut ist und das Kontaktmaß sowie die vollständige Randauflage am eigenen Koffer geprüft wurden. Der Koffer muss sich ohne Verspannung schließen lassen. Mit einer kleinen Testmenge prüfen, ob Kleinteile beim Drehen im eigenen Fach bleiben.
+
+Die **Kleinteile-Transportprüfung** ist standardmäßig aktiv. Fehlende Auflage, unbestätigte Kontaktmaße sowie zu niedrige oder zu hohe Kästchen erzeugen eine Warnung und verhindern den Export als transportgeprüftes Layout. Höhendifferenzen über 0,1 mm werden rechnerisch markiert; diese Rechentoleranz ist keine Material- oder Dichtheitsgarantie. Eine Änderung des Kontaktmaßes oder des Einbaustatus hebt die Prüfbestätigung auf. Beim Kofferwechsel gelten die separat gespeicherten Angaben des neuen Modells.
+
+Für reine CAD-Experimente lässt sich die Transportprüfung ausdrücklich deaktivieren. Dann wird Geometrie ohne Bestätigung des Deckelkontakts exportiert; die Druckhinweise dokumentieren das. Die Software kann weder realen Anpressdruck noch Schaumstoffverformung, Randunterbrechungen oder das Zurückhalten beliebig kleiner Teile nachweisen. Eine passende Einlage und ein reales Kontaktmaß bleiben erforderlich.
